@@ -10,8 +10,8 @@ Completed:
 * [x] Required: Settings page to change the default tip percentage.
 * [x] Optional: Remembering the bill amount across app restarts (did not yet implement time sensitivity)
 * [x] Optional: Using locale-specific currency ( I think have a solution for currency thousands separators so implementing it).
-
-Notes:
+* [x] Additional: Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [x] Additional: Also remembering the tip percentage across app restarts.
 
 ![Video Walkthrough](tipCalculator.gif)
 

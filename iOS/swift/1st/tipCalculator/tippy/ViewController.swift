@@ -67,6 +67,12 @@ class ViewController: UIViewController {
         //TODO:: it should be called automatically as there is an outlet action, will check later
         calculateTipOnBillChange(tipControl);
         
+        /**
+         Make sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app.
+         Just launch the app and start typing.
+        */
+        self.billField.becomeFirstResponder();
+        
     }
     
     /**
