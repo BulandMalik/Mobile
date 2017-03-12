@@ -44,13 +44,29 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         let defaults = UserDefaults.standard;
         
-        print("Default Percentage Index in Main View : ",defaults.integer(forKey: "defaultTipControllerSelectedPer"));
+        print("Default Percentage Index in Main View : ",defaults.integer(forKey: Constants.DEFAULT_TIPCALC_SELECTED_PERCENTAGE));
         
-        tipControl.selectedSegmentIndex = defaults.integer(forKey: "defaultTipControllerSelectedPer");
+        tipControl.selectedSegmentIndex = defaults.integer(forKey: Constants.DEFAULT_TIPCALC_SELECTED_PERCENTAGE);
+        
+        // Setting the currencySymbol based on the locale
+        let locale = Locale.current;
+        let currencySymbol = locale.currencySymbol;
+        let currencyCode = locale.currencyCode;
+        
+        print("currencySymbol:"+currencySymbol!);
+        print("currencyCode:"+currencyCode!);
+        
+        //sets the currency for use for later
+        defaults.set(currencySymbol, forKey: Constants.CURRENCY_SYMBOL);
+        
+        //set last used Bill Amount
+        billField.text = defaults.string(forKey: Constants.LAST_BILL_AMOUNT);
+        print("last bill amount:"+defaults.string(forKey: Constants.LAST_BILL_AMOUNT)!);
         
         //calling the functiona manually
         //TODO:: it should be called automatically as there is an outlet action, will check later
         calculateTipOnBillChange(tipControl);
+        
     }
     
     /**
@@ -92,6 +108,9 @@ class ViewController: UIViewController {
      */
     //@IBAction func calculateTipOnBillChange(_ sender: Any) {
     @IBAction func calculateTipOnBillChange(_ sender: AnyObject) {
+
+        let defaults = UserDefaults.standard;
+        
         let tipPercentages = [0.10 , 0.15, 0.2];
         
         //if user types invalid number like alphabets etc. than return 0
@@ -101,8 +120,14 @@ class ViewController: UIViewController {
         let total = bill + tip;
         
         //tipLabel.text = "$\(tip)";
-        tipLabel.text = String(format: "$%.2f", tip);
-        totalLabel.text = String(format: "$%.2f", total);
+        let currencySymbol = defaults.string(forKey: Constants.CURRENCY_SYMBOL);
+        
+        tipLabel.text = String(format: currencySymbol!+"%.2f", tip);
+        totalLabel.text = String(format: currencySymbol!+"%.2f", total);
+        
+        
+        defaults.set(bill, forKey: Constants.LAST_BILL_AMOUNT);
+        defaults.synchronize();
     }
 }
 

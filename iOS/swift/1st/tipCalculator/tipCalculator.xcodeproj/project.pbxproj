@@ -15,6 +15,7 @@
 		915426951E73CC410080683F /* tipCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915426941E73CC410080683F /* tipCalculatorTests.swift */; };
 		915426A01E73CC410080683F /* tippyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9154269F1E73CC410080683F /* tippyUITests.swift */; };
 		918509D71E759D86004EE1EA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918509D61E759D86004EE1EA /* SettingsViewController.swift */; };
+		91CF63021E75DF4F00FF4911 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CF63011E75DF4F00FF4911 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9154269F1E73CC410080683F /* tippyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tippyUITests.swift; sourceTree = "<group>"; };
 		915426A11E73CC410080683F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		918509D61E759D86004EE1EA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		91CF63011E75DF4F00FF4911 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				9154267F1E73CC410080683F /* AppDelegate.swift */,
 				915426811E73CC410080683F /* ViewController.swift */,
+				91CF63011E75DF4F00FF4911 /* Constants.swift */,
 				915426831E73CC410080683F /* Main.storyboard */,
 				918509D61E759D86004EE1EA /* SettingsViewController.swift */,
 				915426861E73CC410080683F /* Assets.xcassets */,
@@ -268,6 +271,7 @@
 				915426821E73CC410080683F /* ViewController.swift in Sources */,
 				915426801E73CC410080683F /* AppDelegate.swift in Sources */,
 				918509D71E759D86004EE1EA /* SettingsViewController.swift in Sources */,
+				91CF63021E75DF4F00FF4911 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

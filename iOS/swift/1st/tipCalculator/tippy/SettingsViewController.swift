@@ -62,7 +62,7 @@ class SettingsViewController: UIViewController {
         */
         let defaults = UserDefaults.standard;
         
-        defaults.set(defaultTipController.selectedSegmentIndex, forKey: "defaultTipControllerSelectedPer")
+        defaults.set(defaultTipController.selectedSegmentIndex, forKey: Constants.DEFAULT_TIPCALC_SELECTED_PERCENTAGE);
         
         //defaults.setObject(defaultTipController.selectedSegmentIndex, forKey: "defaultTipControllerSelectedPer")
         

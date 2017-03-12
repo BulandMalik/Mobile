@@ -8,6 +8,8 @@ Completed:
 
 * [x] Required: User can enter a bill amount, choose a tip percentage, and see the tip and total values.
 * [x] Required: Settings page to change the default tip percentage.
+* [x] Optional: Remembering the bill amount across app restarts (did not yet implement time sensitivity)
+* [x] Optional: Using locale-specific currency ( I think have a solution for currency thousands separators so implementing it).
 
 Notes:
 
