@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         
         tipControl.selectedSegmentIndex = defaults.integer(forKey: Constants.DEFAULT_TIPCALC_SELECTED_PERCENTAGE);
         
+        /******************** START ::: read the currency symbol based on current locale and set it for later use ********************/
         // Setting the currencySymbol based on the locale
         let locale = Locale.current;
         let currencySymbol = locale.currencySymbol;
@@ -58,6 +59,7 @@ class ViewController: UIViewController {
         
         //sets the currency for use for later
         defaults.set(currencySymbol, forKey: Constants.CURRENCY_SYMBOL);
+        /******************** END ::: read the currency symbol based on current locale and set it for later use ********************/
         
         //set last used Bill Amount
         billField.text = defaults.string(forKey: Constants.LAST_BILL_AMOUNT);
@@ -70,6 +72,8 @@ class ViewController: UIViewController {
         /**
          Make sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app.
          Just launch the app and start typing.
+         
+         Make sure you do not enables Hardware
         */
         self.billField.becomeFirstResponder();
         
@@ -126,14 +130,31 @@ class ViewController: UIViewController {
         let total = bill + tip;
         
         //tipLabel.text = "$\(tip)";
+        
+        /******************** START ::: read the currency symbol that was saved after view loaded up and appeared ********************/
         let currencySymbol = defaults.string(forKey: Constants.CURRENCY_SYMBOL);
+        /******************** END ::: read the currency symbol that was saved after view loaded up and appeared ********************/
+
+
+        /******************** START::: currency thousands separator ********************/
+        //TODO:: it somehow going to zero after 4 digit #s so cannot enter 10,000 onwards???
+        //billField.text = NumberFormatter.localizedString(from: NSNumber(value: bill), number: NumberFormatter.Style.decimal);
         
-        tipLabel.text = String(format: currencySymbol!+"%.2f", tip);
-        totalLabel.text = String(format: currencySymbol!+"%.2f", total);
+        //NumberFormatter.localizedString(from: NSNumber(value: tip), number: NumberFormatter.Style.currency);
+        let tipStr = NumberFormatter.localizedString(from: NSNumber(value: tip), number: NumberFormatter.Style.decimal);
+        let totalStr = NumberFormatter.localizedString(from: NSNumber(value: total), number: NumberFormatter.Style.decimal);
+        
+        //tipLabel.text = String(format: currencySymbol!+"%.2f", tip);
+        tipLabel.text = String(format: currencySymbol!+tipStr);
+        totalLabel.text = String(format: currencySymbol!+totalStr);
+        //totalLabel.text = String(format: currencySymbol!+"%.2f", total);
+        /******************** END::: currency thousands separator ********************/
         
         
+        /******************** START::: saved bill amount to be used with app restarts ********************/
         defaults.set(bill, forKey: Constants.LAST_BILL_AMOUNT);
         defaults.synchronize();
+        /******************** END::: saved bill amount to be used with app restarts ********************/
     }
 }
 
